@@ -4,9 +4,18 @@ import java.time.LocalDateTime;
 
 public class UserDTO {
     private String email;
+    private String userId;
     private String password;
     private LocalDateTime creationDate;
     private LocalDateTime lastLogin;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getEmail() {
         return email;

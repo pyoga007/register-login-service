@@ -16,13 +16,24 @@ public class User {
     @Column
     private String password;
     @Column
+    private String userId;
+    @Column
     private LocalDateTime creationDate;
     @Column
     private LocalDateTime lastLogin;
 
     public User(UserDTO userDto){
         this.email= userDto.getEmail();
+        this.userId=userDto.getUserId();
         this.password= userDto.getPassword();
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Long getUid() {
