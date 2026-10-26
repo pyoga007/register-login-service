@@ -20,8 +20,9 @@ public class RegisterService {
     }
 
     public User createUser(UserDTO userDto) {
-        userDto.setCreationDate(LocalDateTime.now());
-        return registerRepository.save(new User(userDto));
+        User user=new User(userDto);
+        user.setCreationDate(LocalDateTime.now());
+        return registerRepository.save(user);
     }
 
     public boolean userIdExists(String userId) {
