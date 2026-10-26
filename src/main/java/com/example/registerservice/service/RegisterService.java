@@ -5,6 +5,8 @@ import com.example.registerservice.entity.User;
 import com.example.registerservice.repository.RegisterRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class RegisterService {
     private RegisterRepository registerRepository;
@@ -18,6 +20,7 @@ public class RegisterService {
     }
 
     public User createUser(UserDTO userDto) {
+        userDto.setCreationDate(LocalDateTime.now());
         return registerRepository.save(new User(userDto));
     }
 
