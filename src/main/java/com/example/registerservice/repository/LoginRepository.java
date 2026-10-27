@@ -6,8 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface LoginRepository extends JpaRepository<User,Long> {
-    @Query("Select u.password from User where u.userId=:userId")
-    String findPasswordByUserId(@Param("userId") String userId);
+    boolean existsByUserId(String userId);
+    @Query("SELECT u.password from User u where u.userId=:userId")
+    Optional<String> findPasswordByUserId(@Param("userId") String userId);
 }

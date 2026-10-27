@@ -3,6 +3,7 @@ package com.example.registerservice.controller;
 import com.example.registerservice.dto.LoginDTO;
 import com.example.registerservice.exception.InvalidUserPasswordException;
 import com.example.registerservice.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class LoginController {
 
+    @Autowired
     private LoginService loginService;
 
     public LoginController(LoginService loginService){
@@ -22,6 +24,8 @@ public class LoginController {
 
     @GetMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO){
+        if(loginDTO.getUserId().isEmpty() || loginDTO.getPassword().isEmpty())
+            throw new InvalidUserPasswordException("Invalid userId or password");
         if(loginService.authenticate(loginDTO))
             return new ResponseEntity<>("User "+loginDTO.getUserId()+" is logged in successfully.", HttpStatus.ACCEPTED);
 
