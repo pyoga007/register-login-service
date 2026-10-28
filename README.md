@@ -1,6 +1,7 @@
 # register-service
 
-A minimal Spring Boot project configured for **JDK 21** with only the **Spring Web** starter dependency.
+A minimal Spring Boot project configured for **JDK 21**.
+This service Registers and Login a user.
 
 ## Requirements
 - JDK 21
