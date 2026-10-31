@@ -22,6 +22,10 @@ public class User {
     @Column
     private LocalDateTime lastLogin;
 
+    protected User(){
+
+    }
+
     public User(UserDTO userDto){
         this.email= userDto.getEmail();
         this.userId=userDto.getUserId();
