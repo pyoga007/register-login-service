@@ -15,7 +15,7 @@ public class User {
     private String email;
     @Column
     private String password;
-    @Column
+    @Column(unique = true)
     private String userId;
     @Column
     private LocalDateTime creationDate;
